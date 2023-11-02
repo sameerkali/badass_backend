@@ -15,11 +15,11 @@ router.use(async (req, res, next) => {
   next();
 });
 
-// get all users
-router.get("/all-users", getAllUsers);
-
 // create a new user
 router.post("/register", registerController);
+
+// get all users
+router.get("/all-users", getAllUsers);
 
 // login
 router.post("/login", loginController);
