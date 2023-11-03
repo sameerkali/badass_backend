@@ -1,0 +1,11 @@
+{
+  "name": "blog_app_nov_02",
+  "version": "1.0.0",
+  "description": "mern blog app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sameer faridi",
+  "license": "ISC"
+}
