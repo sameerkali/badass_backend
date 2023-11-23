@@ -38,40 +38,30 @@ const User = mongoose.model("User", schema);
 app.post("/api/v1/user/new", async (req, res) => {
   const user = await User.create(req.body);
 
-  res.status(201).json({ kaam: "ho gayaa sab badhiyaa bhai" });
+  res.status(200).json({ sucess: true, kaam: "ho gayaa" });
 });
-
 
 //!read
 app.get("/api/v1/users", async (req, res) => {
-  const users = await User.find();
-  res.status(201).json({ kaam: "ho gayaa sab badhiyaa bhai", users });
-});
+  const user = await User.find();
 
+  res.status(200).json({ sucess: true, kaam: "ho gayaa", user });
+});
 
 //!update
 app.put("/api/v1/user/:id", async (req, res) => {
   let user = await User.findById(req.params.id);
-  if (!user) {
-    return res.status(500).json({ kaam: "nhi hua bhai", product: "not found" });
-  }
-  user = await User.findByIdAndUpdate(req.params.id, req.body); 
-  res.status(200).json({ kaam: "ho gayaa sab badhiyaa bhai", product: "updated" });
-});
+  user = await User.findByIdAndUpdate(req.params.id, req.body);
 
+  res.status(200).json({ sucess: true, kaam: "ho gayaa updated" });
+});
 
 //!delete
 app.delete("/api/v1/user/:id", async (req, res) => {
-  let user = await User.findById(req.params.id);
-  if (!user) {
-    return res.status(500).json({ kaam: "nhi hua bhai", product: "not found" });
-  }
-  await user.deleteOne();
-  res.status(200).json({ kaam: "ho gayaa sab badhiyaa bhai", product: "deleted" });
+  await User.findByIdAndDelete(req.params.id);
 
+  res.status(200).json({ sucess: true, kaam: "ho gayaa delete" });
 });
-
-
 
 app.listen(PORT, () => {
   console.log(`listening on ${PORT}`);
